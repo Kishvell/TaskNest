@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>TaskNest – Dashboard</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+    
+<header>
+    <h1>TaskNest</h1>
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="login.html">Logout</a>
+    </nav>
+</header>
+
+<section class="container">
+    <div id="contributor">
+        <input id="addContributor" type="button" value="Add Contributors">
+        <div class="modal">
+            <label for="username">Add Contributor</label>
+            <input type="text" id="username" name="username">
+            <input type="button" value="Add" id="addContributorButton">
+        </div>
+    </div>
+    <div id="taskList">
+        <input id="addColumn" type="button" value="Add Column">
+        <div class="modal">
+            <label for="titleColumn">Title</label>
+            <input type="text" id="titleColumn" name="titleColumn">
+            <label for="descriptionColumn">Description</label>
+            <input type="text" id="descriptionColumn" name="descriptionColumn">
+            <input type="button" value="Add" id="addColumnButton">
+        </div>
+    </div>
+</section>
+
+<script src="assets/js/tasks.js"></script>
+<script src="assets/js/group.js"></script>
+</body>
+</html>
