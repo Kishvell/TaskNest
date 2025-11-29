@@ -11,4 +11,5 @@ My favorite quote: “Don’t watch the clock; do what it does. Keep going.” �
 ~Richard Sam
 
 My favorite quote: "Be the change that you wish to see in the world." - Mahatma Gandhi
+
 ~Joash Tantiangco
