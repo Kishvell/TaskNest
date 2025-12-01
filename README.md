@@ -12,3 +12,7 @@ My favorite quote: “Don’t watch the clock; do what it does. Keep going.” �
 My favorite quote: "Be the change that you wish to see in the world." - Mahatma Gandhi
 
 ~Joash Tantiangco
+
+You've got to express yourself in life, and it's better out than in. What you reveal, you heal. -Chris Martin
+
+~Ivan Ponce
