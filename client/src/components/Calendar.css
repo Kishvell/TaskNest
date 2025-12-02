@@ -1,0 +1,89 @@
+/* Container for calendar + side panel */
+.calendar-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Calendar grid */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1rem;
+  flex: 1 1 60%;
+}
+
+/* Individual day */
+.calendar-day {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.5rem;
+  min-height: 100px;
+  cursor: default;
+  transition: transform 0.2s;
+}
+.calendar-day:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Day number */
+.day-number {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Tasks inside day */
+.calendar-task {
+  background: #6ebadd;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.25rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.calendar-task:hover {
+  background: #559ecf;
+}
+
+/* Task side panel */
+.task-panel {
+  flex: 1 1 30%;
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  position: sticky;
+  top: 1rem;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Close button */
+.close-panel {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  float: right;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Task details */
+.task-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.task-date {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+.task-desc {
+  font-size: 1rem;
+  line-height: 1.4;
+}
