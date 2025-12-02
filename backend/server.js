@@ -18,7 +18,7 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/tasks", require("./routes/taskRoutes"));
 
 // Serve React frontend
-const clientBuildPath = path.join(__dirname, "../client/dist");
+const clientBuildPath = path.join(__dirname, "../client");
 app.use(express.static(clientBuildPath));
 
 // Catch-all route to serve index.html for React Router
