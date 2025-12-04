@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const path = require("path");
 const connectDB = require("./database/db");
 
 const app = express();
@@ -17,19 +16,10 @@ app.use(express.json());
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/tasks", require("./routes/taskRoutes"));
 
-// Serve React frontend
-const clientBuildPath = path.join(__dirname, "../client/dist");
-app.use(express.static(clientBuildPath));
-
-// Catch-all route to serve index.html for React Router
-// Serve React frontend for any unknown route
-app.use((req, res, next) => {
-  if (req.path.startsWith("/api")) {
-    return res.status(404).json({ message: "API route not found" });
-  }
-  res.sendFile(path.join(clientBuildPath, "index.html"));
+// Health check route
+app.get("/", (req, res) => {
+  res.send("TaskNest backend is running");
 });
-
 
 // Start server
 const PORT = process.env.PORT || 4000;
