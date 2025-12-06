@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import "./SignupPage.css";
+import "./LoginPage.css";
 
 export default function SignupPage() {
   const { signup } = useAuth();

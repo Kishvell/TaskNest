@@ -1,0 +1,26 @@
+.search-sort {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-bottom:1rem;
+  width:100%;
+}
+.search-input {
+  flex:1;
+  padding:10px 12px;
+  border-radius:10px;
+  border: 2px solid var(--olive);
+  background: #fff;
+}
+.controls {
+  display:flex; gap:8px;
+}
+.select {
+  padding:8px 10px;
+  border-radius:8px;
+  border: 2px solid var(--olive);
+  background:var(--cream);
+}
+@media (max-width:720px) {
+  .search-sort { flex-direction: column; gap:8px; align-items:stretch; }
+}

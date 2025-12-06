@@ -1,15 +1,20 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
 import "./Navbar.css";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
+  const [open, setOpen] = useState(false);
 
   return (
     <nav className="navbar">
       <div className="navbar-brand">TaskNest</div>
+      <button className="hamburger" onClick={() => setOpen(!open)}>
+        ☰
+      </button>
 
-      <div className="navbar-links">
+      <div className={`navbar-links ${open ? "open" : ""}`}>
         {user ? (
           <>
             <Link to="/dashboard" className="nav-link">

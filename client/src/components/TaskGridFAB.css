@@ -1,0 +1,44 @@
+.fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--sand);
+  color: var(--forest);
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+  transition: .22s ease;
+  z-index: 250;
+  white-space: nowrap;
+
+}
+
+.fab:hover {
+  background: var(--amber);
+  transform: translateY(-2px);
+}
+.fab-inner {
+  width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background: var(--cream);
+  color: var(--forest);
+  font-size:20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.fab-text { 
+    font-size:0.95rem; color: var(--forest); 
+}
+@media (max-width: 720px) {
+  .fab { 
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 16px;
+
+    padding: 10px 12px; 
+    gap: 8px;
+
+    z-index: 200; 
+  }
+}
