@@ -6,6 +6,8 @@ import DashboardPage from "./pages/DashboardPage";
 import CalendarPage from "./pages/CalendarPage";
 import PomodoroPage from "./pages/PomodoroPage";
 import Navbar from "./components/Navbar";
+import { useEffect } from "react";
+import axios from "axios";
 
 function ProtectedRoute({ children }: { children: React.ReactNode })
 {
@@ -14,6 +16,13 @@ function ProtectedRoute({ children }: { children: React.ReactNode })
 }
 
 export default function App() {
+
+  useEffect(() => {
+    axios.get("https://tasknest-vjqa.onrender.com/")
+      .then(() => console.log("Backend pinged!"))
+      .catch(() => console.log("Backend not awake yet."));
+  }, []);
+
   return (
     <AuthProvider>
       <BrowserRouter>
