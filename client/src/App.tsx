@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import DashboardPage from "./pages/DashboardPage";
 import CalendarPage from "./pages/CalendarPage";
+import PomodoroPage from "./pages/PomodoroPage";
 import Navbar from "./components/Navbar";
 
 function ProtectedRoute({ children }: { children: React.ReactNode })
@@ -38,6 +39,16 @@ export default function App() {
               </ProtectedRoute>
             }
           />
+
+            <Route 
+              path="/pomodoro" 
+              element={
+              <ProtectedRoute>
+                <PomodoroPage />
+              </ProtectedRoute>
+              }
+            />
+
 
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>

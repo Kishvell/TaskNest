@@ -1,15 +1,16 @@
 :root {
-  --primary-dark: #283618;
-  --primary: #606C38;
-  --light: #FEFAE0;
-  --accent: #DDA15E;
-  --accent-dark: #BC6C25;
-
+  --primary-dark: #1b4332;
+  --primary: #2d6a4f;
+  --light: #ffffff;
+  --accent: #d8f3dc;
+  --accent-dark: #40916c;
+  --amber: #bc2f25; 
   --rounded: 12px;
   --transition: 0.2s ease;
 
   --font-main: 'Inter', sans-serif;
 }
+
 
 * {
   margin: 0;

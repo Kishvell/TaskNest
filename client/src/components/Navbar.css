@@ -1,10 +1,12 @@
 :root {
-  --olive: #606c38;
-  --forest: #283618;
-  --cream: #fefae0;
-  --sand: #dda15e;
-  --amber: #bc6c25;
+  --olive: #2d6a4f;   
+  --forest: #1b4332;  
+  --cream: #ffffff;   
+  --sand: #d8f3dc;    
+  --amber: #bc2f25;   
+  --radius: 12px;
 }
+
 
 .navbar {
   width: 100%;

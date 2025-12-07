@@ -23,6 +23,10 @@ export default function Navbar() {
             <Link to="/calendar" className="nav-link">
               Calendar
             </Link>
+            <Link to="/pomodoro" className="nav-link">
+              Pomodoro
+            </Link>
+
             <button onClick={logout} className="nav-button logout">
               Logout
             </button>

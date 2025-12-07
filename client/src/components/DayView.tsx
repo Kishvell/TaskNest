@@ -2,21 +2,20 @@ import { Task } from "../types/Task";
 
 export default function DayView({
   tasks,
+  date,
   onSelect,
 }: {
   tasks: Task[];
+  date: string;
   onSelect: (t: Task) => void;
 }) {
-  const today = new Date().toISOString().split("T")[0];
-  const todaysTasks = tasks.filter((t) => t.date === today);
+  const todaysTasks = tasks.filter((t) => t.date === date);
 
   return (
     <div className="day-view">
-      <h2>Today</h2>
+      <h2>{date}</h2>
 
-      {todaysTasks.length === 0 && (
-        <p className="empty">No tasks today</p>
-      )}
+      {todaysTasks.length === 0 && <p className="empty">No tasks</p>}
 
       {todaysTasks.map((task) => (
         <div

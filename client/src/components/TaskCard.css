@@ -1,16 +1,16 @@
 :root {
-  --olive: #606c38;
-  --forest: #283618;
-  --cream: #fefae0;
-  --sand: #dda15e;
-  --amber: #bc6c25;
-
-  --radius: 14px;
+  --olive: #2d6a4f;   
+  --forest: #1b4332;  
+  --cream: #ffffff;   
+  --sand: #d8f3dc;    
+  --amber: #40916c;   
+  --radius: 12px;
 }
+
 
 .task-card {
   background: var(--cream);
-  border-left: 6px solid var(--sand);
+  border-left: 6px solid var(--olive);
   border-radius: var(--radius);
   padding: 1rem;
   display: flex;
@@ -29,7 +29,7 @@
 }
 
 .task-card.completed {
-  border-left-color: var(--olive);
+  border-left-color: var(--sand);
   opacity: .8;
   filter: grayscale(.08);
   transform: scale(.99);

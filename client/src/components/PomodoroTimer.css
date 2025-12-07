@@ -1,0 +1,82 @@
+.pomodoro-box {
+  background: white;
+  padding: 24px;
+  border-radius: var(--rounded);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  border: 2px solid var(--primary);
+  position: relative;
+}
+
+.pomo-time {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 8px 0 0;
+  color: var(--primary-dark);
+}
+
+.pomo-mode {
+  margin: 6px 0 16px;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+.pomo-btns button {
+  margin: 6px;
+  padding: 10px 18px;
+  border-radius: var(--rounded);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.pomo-start {
+  background: var(--primary);
+  color: white;
+}
+
+.pomo-stop {
+  background: #e63946;
+  color: white;
+}
+
+.pomo-reset {
+  background: var(--accent);
+  color: white;
+}
+
+.pomo-skip {
+  background: var(--primary-dark);
+  color: white;
+}
+
+.pomo-btns button:hover {
+  opacity: 0.8;
+}
+
+.pomo-cycles {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.pomo-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--primary-dark);
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 10;
+}
+
+.pomo-close-btn:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}

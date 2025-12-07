@@ -1,42 +1,63 @@
 import { Task } from "../types/Task";
 
+function toYMD(d: Date) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
 export default function WeekView({
   tasks,
+  activeDate,
   onSelect,
+  onSelectDay,
 }: {
   tasks: Task[];
+  activeDate: string;
   onSelect: (t: Task) => void;
+  onSelectDay: (date: string) => void;
 }) {
-  const today = new Date();
-  const currentWeekTasks = tasks.filter((t) => {
-    if (!t.date) return false;
-    const dt = new Date(t.date);
-    const diff = dt.getDate() - today.getDate();
-    return Math.abs(diff) < 7;
-  });
+  const refDate = new Date(activeDate);
+
+  const weekStart = new Date(refDate);
+  weekStart.setHours(0, 0, 0, 0);
+  weekStart.setDate(refDate.getDate() - refDate.getDay());
 
   const days = Array.from({ length: 7 }, (_, i) => {
-    const d = new Date();
-    d.setDate(today.getDate() - today.getDay() + i);
+    const d = new Date(weekStart);
+    d.setDate(weekStart.getDate() + i);
+    d.setHours(0, 0, 0, 0);
     return d;
   });
 
   return (
     <div className="week-grid">
       {days.map((d, i) => {
-        const ds = currentWeekTasks.filter((t) => t.date === d.toISOString().split("T")[0]);
+        const iso = toYMD(d);
+        const dayTasks = tasks.filter((t) => t.date === iso);
 
         return (
-          <div key={i} className="week-day">
+          <div
+            key={i}
+            className="week-day"
+            onClick={() => onSelectDay(iso)}
+            style={{ cursor: "pointer" }}
+          >
+            <div className="week-day-number">{d.getDate()}</div>
+
             <div className="week-day-label">
               {d.toLocaleDateString("en-US", { weekday: "short" })}
             </div>
 
-            {ds.map((task) => (
+            {dayTasks.map((task) => (
               <div
                 key={task._id}
                 className={`day-task ${task.completed ? "completed" : ""}`}
-                onClick={() => onSelect(task)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelect(task);
+                }}
               >
                 {task.title}
               </div>
