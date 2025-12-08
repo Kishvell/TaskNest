@@ -1,16 +1,72 @@
+import { useState } from 'react';
 
+// Move the members state to the parent, then pass it and the setter down to the child.
 export default function CardModal() {
+    const [ cards, setCards] = useState<string[][]>([]);
+    const [ newCard, setNewCard ] = useState<string[]>([]);
+    
+    function addCard(cardTitle: string, cardDescription: string) {
+        
+        setNewCard([cardTitle, cardDescription]);
+
+        setCards(prev => {
+            return [...prev, newCard]
+        });
+
+        setNewCard([]);
+    }
+
+    const cardTitle = "";
+    const cardDescription = "";
+
+    // To be removed afterwards
+    console.log(cards);
+
     return (
         <div className="modal">
             <label htmlFor="cardTitle">Title</label>
-            <input type="text" name="cardTitle" id="cardTitle" />
+            <input type="text" name="cardTitle" id="cardTitle" value={cardTitle}/>
 
             <label htmlFor="cardDescription">Description</label>
-            <input type="text" name="cardDescription" id="cardDescription" />
+            <textarea name="cardDescription" id="cardDescription" rows={9} cols={50} value={cardDescription}/>
 
-            {/*label for  */}
+            {/*Need to add:
+                - calendar?
+                - members responsible for the card
+            */}
             <input type="button" value="Cancel" />
-            <input type="button" value="Add Card" />
+            <input type="button" value="Add Card" onClick={() => addCard(cardTitle, cardDescription)}/>
         </div>
     );
 }
+
+/* 
+//Sample solution by ChatGpt:
+// Parent
+function Parent() {
+  const [members, setMembers] = useState<string[]>([]);
+
+  const addMember = (username: string) => {
+    setMembers(prev => [...prev, username]);
+  };
+
+  return <Child members={members} addMember={addMember} />;
+}
+
+// Child
+type ChildProps = {
+  members: string[];
+  addMember: (username: string) => void;
+};
+
+function Child({ members, addMember }: ChildProps) {
+  return (
+    <div>
+      <button onClick={() => addMember("Alice")}>Add</button>
+      {members.map(m => (
+        <div key={m}>{m}</div>
+      ))}
+    </div>
+  );
+}
+*/
