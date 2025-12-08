@@ -1,14 +1,25 @@
+import  MembersModal from "../components/MembersModal";
+import ColumnModal from "../components/ColumnModal";
+import CardModal from "../components/CardModal";
+import AddButton from "../components/AddButton";
 
 export default function GroupPage() {
-    /* 
-    // Add members button (inside the function)
-    // Add members modal (defined outside the function)
 
-    // Add column button (inside the function)
-    // Add column modal (defined outside the function)
-
-    // Add Card button (inside the function)
-    // Add Card modal (defined outside the function)
-    
-    */
+    return (
+        <>
+        <div>
+            <MembersModal />
+            <AddButton buttonValue="Add Members"/>
+        </div>
+        <div>
+            <ColumnModal />
+            <AddButton buttonValue="Add Column"/>
+        </div>
+        <div>
+            {/*Card Modal should be inside a column component */}
+            <CardModal />
+        </div>
+        </>
+        
+    );
 }
