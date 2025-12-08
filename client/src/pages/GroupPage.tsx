@@ -8,16 +8,17 @@ export default function GroupPage() {
     return (
         <>
         <div>
-            <MembersModal />
+            <MembersModal displayVisible="none" />
             <AddButton buttonValue="Add Members"/>
         </div>
         <div>
-            <ColumnModal />
+            <ColumnModal displayVisible="none"/>
             <AddButton buttonValue="Add Column"/>
         </div>
         <div>
-            {/*Card Modal should be inside a column component */}
-            <CardModal />
+            {/*AddButton for CardModal should be inside a column component */}
+            <CardModal displayVisible="none"/>
+            <AddButton buttonValue="Add Card"/>
         </div>
         </>
         

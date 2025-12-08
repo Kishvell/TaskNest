@@ -1,7 +1,11 @@
 import { useState } from 'react';
 
+type MembersModalProps = {
+  displayVisible: "none" | "block"
+};
+
 // Move the members state to the parent, then pass it and the setter down to the child.
-export default function MembersModal() {
+export default function MembersModal({ displayVisible = "none" }: MembersModalProps) {
     const [ members, setMembers] = useState<string[]>([]);
     const [ newMember, setNewMember ] = useState<string>("");
 
@@ -16,8 +20,21 @@ export default function MembersModal() {
     // To be removed afterwards
     console.log(members);
 
+    // CSS
+    const modalStyle: React.CSSProperties = {
+      display: displayVisible,
+      position: "fixed",
+      zIndex: 1,
+      left: 0,
+      top: 0,
+      width: 100,
+      height: 100,
+      overflow: "auto",
+      backgroundColor: "rgba(0,0,0,0.4)",
+    }
+
     return (
-        <div className="modal">
+        <div className="modal" style={modalStyle}>
             <label htmlFor="memberUsername">Member Username</label>
             <input type="text" name="memberUsername" id="memberUsername" value={newMember}/>
             <input type="button" value="Cancel" />
@@ -25,6 +42,8 @@ export default function MembersModal() {
         </div>
     );
 }
+
+
 
 /* 
 //Sample solution by ChatGpt:

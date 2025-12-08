@@ -1,7 +1,11 @@
 import { useState } from 'react';
 
+type ColumnModalProps = {
+  displayVisible: "none" | "block"
+};
+
 // Move the members state to the parent, then pass it and the setter down to the child.
-export default function ColumnModal() {
+export default function ColumnModal({displayVisible = "none"}: ColumnModalProps) {
     const [ columns, setColumns] = useState<string[]>([]);
     const [ newColumn, setNewColumn ] = useState<string>("");
 
@@ -16,8 +20,22 @@ export default function ColumnModal() {
     // To be removed afterwards
     console.log(columns);
 
+    
+    // CSS
+    const modalStyle: React.CSSProperties = {
+      display: displayVisible,
+      position: "fixed",
+      zIndex: 1,
+      left: 0,
+      top: 0,
+      width: 100,
+      height: 100,
+      overflow: "auto",
+      backgroundColor: "rgba(0,0,0,0.4)",
+    }
+
     return (
-        <div className="modal">
+        <div className="modal" style={modalStyle}>
             <label htmlFor="columnTitle">Title</label>
             <input type="text" name="columnTitle" id="columnTitle" value={newColumn}/>
 
