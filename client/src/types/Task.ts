@@ -5,3 +5,16 @@ export interface Task {
   date: string;
   completed: boolean;
 }
+
+// interfaces for group tasks
+export interface GroupColumnTask {
+  _id: string;
+  title: string;
+  cards: GroupCardTask[];
+}
+
+export interface GroupCardTask {
+  _id: string;
+  title: string;
+  description: string;
+}
