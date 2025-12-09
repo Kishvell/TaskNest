@@ -12,6 +12,8 @@ export default function GroupPage() {
         return localTasks ? JSON.parse(localTasks) as GroupColumnTask[] : [];
     })
 
+    const [activeModal, setActiveModal] = useState<null | "memberModal" | "columnModal" | "cardModal">(null);
+
     useEffect(() => {
         localStorage.setItem("GROUPTASKS", JSON.stringify(groupTask));
     }, [groupTask])
@@ -20,23 +22,23 @@ export default function GroupPage() {
         <>
         <div>
             <h1>Title</h1>
-            <AddButton buttonValue="Add Members"/>
+            <AddButton buttonValue="Add Members" onClick={() => setActiveModal("memberModal")}/>
         </div>
         <div>
             {/*div for all column tasks */}
             {groupTask.length === 0 && "No Tasks"}
             {groupTask.map(columns => {
                 return(
-                    <ColumnGroupTask {...columns} key={columns._id} title={columns.title} cards={columns.cards}/>
+                    <ColumnGroupTask {...columns} key={columns._id} title={columns.title} cards={columns.cards} onClick={() => setActiveModal("cardModal")}/>
                 );
             })}
-            <AddButton buttonValue="Add Column"/>
+            <AddButton buttonValue="Add Column" onClick={() => setActiveModal("columnModal")}/>
         </div>
         <div>
             {/*div for modals */}
-            <MembersModal displayVisible="none"/>
-            <ColumnModal displayVisible="none"/>
-            <CardModal displayVisible="none"/>
+            {activeModal === "memberModal" && <MembersModal />}
+            {activeModal === "columnModal" && <ColumnModal />}
+            {activeModal === "cardModal" && <CardModal />}
         </div>
         </>
         

@@ -2,7 +2,13 @@ import AddButton from "./AddButton"
 import CardGroupTask from "./CardGroupTask";
 import { GroupColumnTask } from "../types/Task";
 
-export default function ColumnGroupTask({ cards, title }: GroupColumnTask) {
+interface FunctionProp {
+    onClick: () => void;
+}
+
+type GroupColumnTaskProp = GroupColumnTask & FunctionProp;
+
+export default function ColumnGroupTask({ cards, title, onClick }: GroupColumnTaskProp) {
     return (
         <>
         <div >
@@ -13,7 +19,7 @@ export default function ColumnGroupTask({ cards, title }: GroupColumnTask) {
                     <CardGroupTask {...card} title={card.title}/>
                 )
             })}
-            <AddButton buttonValue="Add Card" onClick={() => null}/>
+            <AddButton buttonValue="Add Card" onClick={onClick}/>
         </div>
         </>
     );

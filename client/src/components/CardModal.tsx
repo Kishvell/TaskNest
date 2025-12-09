@@ -1,11 +1,8 @@
 import { useState } from 'react';
-
-type CardModalProps = {
-  displayVisible: "none" | "block"
-};
+import "./GroupModal.css";
 
 // Move the members state to the parent, then pass it and the setter down to the child.
-export default function CardModal({displayVisible = "none"}: CardModalProps) {
+export default function CardModal() {
     const [ cards, setCards] = useState<string[][]>([]);
     const [ newCard, setNewCard ] = useState<string[]>([]);
     
@@ -26,21 +23,8 @@ export default function CardModal({displayVisible = "none"}: CardModalProps) {
     // To be removed afterwards
     console.log(cards);
 
-     // CSS
-    const modalStyle: React.CSSProperties = {
-      display: displayVisible,
-      position: "fixed",
-      zIndex: 1,
-      left: 0,
-      top: 0,
-      width: 100,
-      height: 100,
-      overflow: "auto",
-      backgroundColor: "rgba(0,0,0,0.4)",
-    }
-
     return (
-        <div className="modal" style={modalStyle}>
+        <div className="modal">
             <label htmlFor="cardTitle">Title</label>
             <input type="text" name="cardTitle" id="cardTitle" value={cardTitle}/>
 

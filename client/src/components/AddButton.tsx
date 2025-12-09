@@ -5,12 +5,8 @@ type MyProps = {
     onClick: () => void;
 };
 
-
 // common template for the add button in "add column" and "add modal"
 export default function AddButton({buttonValue, onClick}: MyProps) {
-
-    // function to open modal onclick
-
     return (
         // the function passed must toggle a variable state of display from "none" to "block"
         <input type="button" value={buttonValue} onClick={onClick}/>
