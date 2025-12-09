@@ -2,8 +2,7 @@
 
 TO SEE THE PAGE PLEASE GO TO https://task-nest-tswk.onrender.com/dashboard
 
-User: ivanpl809@gmail.com
-Password: 123
+User: ivanpl809@gmail.com - Password: 123
 
 “Organize your studies. Simplify your life.”
 
