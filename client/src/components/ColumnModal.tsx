@@ -3,23 +3,23 @@ import "./GroupModal.css";
 
 interface FunctionProp {
     onClose: () => void;
+    onAdd: (title: string, someFunc: (someText: string) => void, text: string) => void;
 }
 
 // Move the members state to the parent, then pass it and the setter down to the child.
-export default function ColumnModal({onClose}: FunctionProp) {
-    const [ columns, setColumns] = useState<string[]>([]);
+export default function ColumnModal({onClose, onAdd}: FunctionProp) {
+    // const [ columns, setColumns] = useState<string[]>([]);
     const [ newColumn, setNewColumn ] = useState<string>("");
 
-    function addColumn(column: string) {
-        setColumns(prev => {
-            return [...prev, column]
-        });
 
-        setNewColumn("");
-    }
+    // {OLD CODE, COULD BE USED FOR REFERENCE}
+    // function addColumn(column: string) {
+    //     setColumns(prev => {
+    //         return [...prev, column]
+    //     });
 
-    // To be removed afterwards
-    console.log(columns);
+    //     setNewColumn("");
+    // }
 
     return (
         <div className="modal">
@@ -27,7 +27,7 @@ export default function ColumnModal({onClose}: FunctionProp) {
             <input type="text" name="columnTitle" id="columnTitle" value={newColumn}/>
 
             <input type="button" value="Cancel" onClick={() => onClose()}/>
-            <input type="button" value="Add Column" onClick={() => addColumn(newColumn)}/>
+            <input type="button" value="Add Column" onClick={() => onAdd(newColumn, setNewColumn, "")}/>
         </div>
     );
 }

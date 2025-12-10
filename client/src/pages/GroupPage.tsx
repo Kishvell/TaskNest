@@ -4,7 +4,7 @@ import ColumnModal from "../components/ColumnModal";
 import CardModal from "../components/CardModal";
 import AddButton from "../components/AddButton";
 import ColumnGroupTask from "../components/ColumnGroupTask";
-import { GroupColumnTask, GroupUser } from "../types/Task";
+import { GroupColumnTask, GroupCardTask, GroupUser } from "../types/Task";
 
 export default function GroupPage() {
     const [groupMembers, setGroupMembers] = useState(() => {
@@ -22,6 +22,19 @@ export default function GroupPage() {
     useEffect(() => {
         localStorage.setItem("GROUPTASKS", JSON.stringify(groupTask));
     }, [groupTask])
+
+    function addColumn(newTitle: string, newFunc: (text: string) => void, funcArg: string){
+        const inputTitle = newTitle;
+        
+        newFunc(funcArg);
+        
+        setGroupTask(prev => {
+            return [
+                ...prev,
+                {_id: crypto.randomUUID(), title: inputTitle, cards: []}
+            ]
+        })
+    }
 
     return (
         <>
@@ -42,7 +55,7 @@ export default function GroupPage() {
         <div>
             {/*div for modals */}
             {activeModal === "memberModal" && <MembersModal onClose={() => setActiveModal(null)}/>}
-            {activeModal === "columnModal" && <ColumnModal onClose={() => setActiveModal(null)}/>}
+            {activeModal === "columnModal" && <ColumnModal onClose={() => setActiveModal(null)} onAdd={addColumn}/>}
             {activeModal === "cardModal" && <CardModal onClose={() => setActiveModal(null)}/>}
         </div>
         </>
