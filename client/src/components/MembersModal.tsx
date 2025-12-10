@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import "./GroupModal.css";
 
+interface FunctionProp {
+    onClose: () => void;
+}
+
 // Move the members state to the parent, then pass it and the setter down to the child.
-export default function MembersModal() {
+export default function MembersModal({onClose}: FunctionProp) {
     const [ members, setMembers] = useState<string[]>([]);
     const [ newMember, setNewMember ] = useState<string>("");
 
@@ -21,7 +25,7 @@ export default function MembersModal() {
         <div className="modal">
             <label htmlFor="memberUsername">Member Username</label>
             <input type="text" name="memberUsername" id="memberUsername" value={newMember}/>
-            <input type="button" value="Cancel" />
+            <input type="button" value="Cancel" onClick={() => onClose()}/>
             <input type="button" value="Add User" onClick={() => addMember(newMember)}/>
         </div>
     );

@@ -18,3 +18,8 @@ export interface GroupCardTask {
   title: string;
   description: string;
 }
+
+export interface GroupUser {
+  _id: string;
+  name: string;
+}

@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import "./GroupModal.css";
 
+interface FunctionProp {
+    onClose: () => void;
+}
+
 // Move the members state to the parent, then pass it and the setter down to the child.
-export default function ColumnModal() {
+export default function ColumnModal({onClose}: FunctionProp) {
     const [ columns, setColumns] = useState<string[]>([]);
     const [ newColumn, setNewColumn ] = useState<string>("");
 
@@ -22,7 +26,7 @@ export default function ColumnModal() {
             <label htmlFor="columnTitle">Title</label>
             <input type="text" name="columnTitle" id="columnTitle" value={newColumn}/>
 
-            <input type="button" value="Cancel" />
+            <input type="button" value="Cancel" onClick={() => onClose()}/>
             <input type="button" value="Add Column" onClick={() => addColumn(newColumn)}/>
         </div>
     );

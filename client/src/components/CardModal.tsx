@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import "./GroupModal.css";
 
+interface FunctionProp {
+    onClose: () => void;
+}
+
 // Move the members state to the parent, then pass it and the setter down to the child.
-export default function CardModal() {
+export default function CardModal({onClose}: FunctionProp) {
     const [ cards, setCards] = useState<string[][]>([]);
     const [ newCard, setNewCard ] = useState<string[]>([]);
     
@@ -35,7 +39,7 @@ export default function CardModal() {
                 - calendar?
                 - members responsible for the card
             */}
-            <input type="button" value="Cancel" />
+            <input type="button" value="Cancel" onClick={() => onClose()} />
             <input type="button" value="Add Card" onClick={() => addCard(cardTitle, cardDescription)}/>
         </div>
     );

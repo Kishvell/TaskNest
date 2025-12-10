@@ -4,9 +4,14 @@ import ColumnModal from "../components/ColumnModal";
 import CardModal from "../components/CardModal";
 import AddButton from "../components/AddButton";
 import ColumnGroupTask from "../components/ColumnGroupTask";
-import { GroupColumnTask } from "../types/Task";
+import { GroupColumnTask, GroupUser } from "../types/Task";
 
 export default function GroupPage() {
+    const [groupMembers, setGroupMembers] = useState(() => {
+        const localMembers = localStorage.getItem("GROUPMEMBERS");
+        return localMembers ? JSON.parse(localMembers) as GroupUser[] : [];
+    })
+
     const [groupTask, setGroupTask] = useState(() => {
         const localTasks = localStorage.getItem("GROUPTASKS");
         return localTasks ? JSON.parse(localTasks) as GroupColumnTask[] : [];
@@ -22,7 +27,7 @@ export default function GroupPage() {
         <>
         <div>
             <h1>Title</h1>
-            <AddButton buttonValue="Add Members" onClick={() => setActiveModal("memberModal")}/>
+            <AddButton buttonValue="Add Members" onOpen={() => setActiveModal("memberModal")}/>
         </div>
         <div>
             {/*div for all column tasks */}
@@ -32,13 +37,13 @@ export default function GroupPage() {
                     <ColumnGroupTask {...columns} key={columns._id} title={columns.title} cards={columns.cards} onClick={() => setActiveModal("cardModal")}/>
                 );
             })}
-            <AddButton buttonValue="Add Column" onClick={() => setActiveModal("columnModal")}/>
+            <AddButton buttonValue="Add Column" onOpen={() => setActiveModal("columnModal")}/>
         </div>
         <div>
             {/*div for modals */}
-            {activeModal === "memberModal" && <MembersModal />}
-            {activeModal === "columnModal" && <ColumnModal />}
-            {activeModal === "cardModal" && <CardModal />}
+            {activeModal === "memberModal" && <MembersModal onClose={() => setActiveModal(null)}/>}
+            {activeModal === "columnModal" && <ColumnModal onClose={() => setActiveModal(null)}/>}
+            {activeModal === "cardModal" && <CardModal onClose={() => setActiveModal(null)}/>}
         </div>
         </>
         

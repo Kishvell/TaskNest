@@ -19,7 +19,7 @@ export default function ColumnGroupTask({ cards, title, onClick }: GroupColumnTa
                     <CardGroupTask {...card} title={card.title}/>
                 )
             })}
-            <AddButton buttonValue="Add Card" onClick={onClick}/>
+            <AddButton buttonValue="Add Card" onOpen={onClick}/>
         </div>
         </>
     );
