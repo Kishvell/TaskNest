@@ -2,9 +2,14 @@
 
 TO SEE THE PAGE PLEASE GO TO https://task-nest-tswk.onrender.com/dashboard
 
-User: ivanpl809@gmail.com
+CREDENTIALS TO TEST: 
+      User: admin@tasknet.com
+      Pwd: WinterWonderland1@
 
-Password: 123
+      if errors try ivanpl809@gmail.com
+      pwd: 123
+
+This project was done in react + css and deployed on render. As an extra mile we incorporated a pomodoro timer
 
 “Organize your studies. Simplify your life.”
 
