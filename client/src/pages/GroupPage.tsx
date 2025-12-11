@@ -23,6 +23,10 @@ export default function GroupPage() {
         localStorage.setItem("GROUPTASKS", JSON.stringify(groupTask));
     }, [groupTask])
 
+    function addMember() {
+        
+    }
+
     function addColumn(newTitle: string, newFunc: (text: string) => void, funcArg: string){
         const inputTitle = newTitle;
         
@@ -35,6 +39,32 @@ export default function GroupPage() {
             ]
         })
     }
+
+    function addCard(
+        newTitle: string, 
+        newDescription: string, 
+        clearTitleFunc: (text: string) => void, 
+        clearDescFunc: (text: string) => void,
+        clearFuncArg: string,
+        colId: string
+     ) {
+        const inputTitle = newTitle;
+        const inputDescription = newDescription;
+
+        clearTitleFunc(clearFuncArg);
+        clearDescFunc(clearFuncArg);
+
+        const newCard: GroupCardTask = {_id: crypto.randomUUID(), title: inputTitle, description: inputDescription};
+        setGroupTask(prevCols => {
+            return prevCols.map(cols => {
+                return (cols._id == colId) ?
+                {
+                    ...cols,
+                    cards: [...cols.cards, newCard]
+                } : cols;
+            })
+        })
+     }
 
     return (
         <>
