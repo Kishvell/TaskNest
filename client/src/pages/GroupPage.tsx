@@ -23,8 +23,19 @@ export default function GroupPage() {
         localStorage.setItem("GROUPTASKS", JSON.stringify(groupTask));
     }, [groupTask])
 
-    function addMember() {
-        
+    function addMember(memberId: string, memberName: string) {
+        const memberExists: GroupUser[] = groupMembers.filter(member => member._id == memberId);
+        if (memberExists.length != 0) {
+            // should be replaced by an alert to the screen
+            return console.log("member already exists!");
+        }
+
+        setGroupMembers(prev => {
+            return [
+                ...prev,
+                {_id: memberId, name: memberName}
+            ]
+        })
     }
 
     function addColumn(newTitle: string, newFunc: (text: string) => void, funcArg: string){
